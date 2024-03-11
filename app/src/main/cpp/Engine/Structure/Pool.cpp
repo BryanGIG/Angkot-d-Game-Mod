@@ -1,7 +1,6 @@
 #include "../Includes.hpp"
 
 GameData *Pool::getGameData() {
-    LOGI(__FUNCTION__);
     GameData *gamedata = nullptr;
     Il2Cpp::GetStaticFieldValue("Assembly-CSharp.dll", "", "Pool", "GamedData", &gamedata);
     return gamedata;

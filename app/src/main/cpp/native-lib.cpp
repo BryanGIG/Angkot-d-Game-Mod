@@ -12,6 +12,8 @@ void lib_main() {
             sleep(1);
         } while (!map.isValid() && !map.isValidELF());
 
+        sleep(5);
+
         if (Il2Cpp::Init("libil2cpp.so") == 0) {
             LOGI("Il2Cpp::Init - Valid");
             ListCBaseEntry::add(std::make_shared<Lobby>());

@@ -1,9 +1,9 @@
 #include "../Includes.hpp"
 
-void (*Awake)(Lobby *) = nullptr;
+void (*Update)(Lobby *) = nullptr;
 
-void new_Awake(Lobby *self) {
-    Awake(self);
+void new_Update(Lobby *self) {
+    Update(self);
     auto gameData = Pool::getGameData();
     if (!gameData) {
         LOGE("Game data null");
@@ -12,7 +12,7 @@ void new_Awake(Lobby *self) {
 
     auto userv5 = gameData->getUserv5();
     if (!userv5) {
-        LOGE("userv5 null");
+        LOGE("Userv5 null");
         return;
     }
 
@@ -20,11 +20,11 @@ void new_Awake(Lobby *self) {
 }
 
 void Lobby::Initialize() {
-    setPointer(Awake, "Awake", 0);
+    setPointer(Update, "Update", 0);
 }
 
 void Lobby::Hook() {
-    setHook(Awake, "Awake");
+    setHook(Update, "Update");
 }
 
 const char *Lobby::getAssembly() {
